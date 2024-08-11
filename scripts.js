@@ -1,49 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = [
-    "in-progress",
-    "finished",
-    "on-hold",
-    "dropped",
-    "planned",
-    "suggested",
-  ];
+  const sections = {
+    progress: "IN-PROGRESS.",
+    finished: "FINISHED.",
+    hold: "ON-HOLD.",
+    dropped: "DROPPED.",
+    planned: "PLANNED.",
+    suggested: "SUGGESTED.",
+  };
   let currentIndex = 0;
 
   function showSection(index) {
-    sections.forEach((section, i) => {
-      const sectionElement = document.getElementById(section);
+    const sectionKeys = Object.keys(sections);
+    const section = sectionKeys[index];
+    const sectionTitle = sections[section];
+
+    Object.keys(sections).forEach((key, i) => {
+      const sectionElement = document.getElementById(key);
       sectionElement.classList.toggle("active", i === index);
 
-      const link = document.querySelector(`nav a[data-section="${section}"]`);
+      const link = document.querySelector(`nav a[data-section="${key}"]`);
       if (i === index) {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
       }
     });
-    document.getElementById("section-title").textContent =
-      sections[index].replace("-", " ").toUpperCase() + ".";
+
+    document.getElementById("section-title").textContent = sectionTitle;
   }
 
   document.getElementById("left-arrow").addEventListener("click", () => {
-    currentIndex = currentIndex === 0 ? sections.length - 1 : currentIndex - 1;
+    currentIndex =
+      currentIndex === 0 ? Object.keys(sections).length - 1 : currentIndex - 1;
     showSection(currentIndex);
   });
 
   document.getElementById("right-arrow").addEventListener("click", () => {
-    currentIndex = currentIndex === sections.length - 1 ? 0 : currentIndex + 1;
+    currentIndex =
+      currentIndex === Object.keys(sections).length - 1 ? 0 : currentIndex + 1;
     showSection(currentIndex);
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
       currentIndex =
-        currentIndex === 0 ? sections.length - 1 : currentIndex - 1;
+        currentIndex === 0
+          ? Object.keys(sections).length - 1
+          : currentIndex - 1;
       showSection(currentIndex);
     }
     if (event.key === "ArrowRight") {
       currentIndex =
-        currentIndex === sections.length - 1 ? 0 : currentIndex + 1;
+        currentIndex === Object.keys(sections).length - 1
+          ? 0
+          : currentIndex + 1;
       showSection(currentIndex);
     }
   });
@@ -53,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const section = this.getAttribute("data-section");
       if (section) {
         e.preventDefault();
-        currentIndex = sections.indexOf(section);
+        currentIndex = Object.keys(sections).indexOf(section);
         showSection(currentIndex);
       }
     });
@@ -81,9 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function updateDisplay() {
         const statusContainers = {
-          "in-progress": document.getElementById("in-progress"),
+          progress: document.getElementById("progress"),
           finished: document.getElementById("finished"),
-          "on-hold": document.getElementById("on-hold"),
+          hold: document.getElementById("hold"),
           dropped: document.getElementById("dropped"),
           planned: document.getElementById("planned"),
           suggested: document.getElementById("suggested"),
@@ -115,9 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
             note,
             ...genres
           ] = row;
-          const statusKey = status.toLowerCase().replace(" ", "-");
 
-          if (statusContainers[statusKey]) {
+          if (statusContainers[status]) {
             const gameContainer = document.createElement("div");
             gameContainer.className = "game-container";
             gameContainer.style.setProperty("--animation-order", index);
@@ -184,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
               gameContainer.appendChild(noteElement);
             }
 
-            statusContainers[statusKey].appendChild(gameContainer);
+            statusContainers[status].appendChild(gameContainer);
           }
         });
 
