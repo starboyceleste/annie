@@ -7,63 +7,57 @@ document.addEventListener("DOMContentLoaded", () => {
     planned: "PLANNED.",
     suggested: "SUGGESTED.",
   };
+
+  const sectionKeys = Object.keys(sections);
+  const sectionElements = sectionKeys.map((key) =>
+    document.getElementById(key)
+  );
+  const sectionLinks = sectionKeys.map((key) =>
+    document.querySelector(`nav a[data-section="${key}"]`)
+  );
+  const sectionTitleElement = document.getElementById("section-title");
+
   let currentIndex = 0;
 
   function showSection(index) {
-    const sectionKeys = Object.keys(sections);
-    const section = sectionKeys[index];
-    const sectionTitle = sections[section];
-
-    Object.keys(sections).forEach((key, i) => {
-      const sectionElement = document.getElementById(key);
-      sectionElement.classList.toggle("active", i === index);
-
-      const link = document.querySelector(`nav a[data-section="${key}"]`);
-      if (i === index) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
+    sectionElements.forEach((element, i) => {
+      element.classList.toggle("active", i === index);
+      sectionLinks[i].classList.toggle("active", i === index);
     });
-
-    document.getElementById("section-title").textContent = sectionTitle;
+    sectionTitleElement.textContent = sections[sectionKeys[index]];
   }
 
   document.getElementById("left-arrow").addEventListener("click", () => {
     currentIndex =
-      currentIndex === 0 ? Object.keys(sections).length - 1 : currentIndex - 1;
+      currentIndex === 0 ? sectionKeys.length - 1 : currentIndex - 1;
     showSection(currentIndex);
   });
 
   document.getElementById("right-arrow").addEventListener("click", () => {
     currentIndex =
-      currentIndex === Object.keys(sections).length - 1 ? 0 : currentIndex + 1;
+      currentIndex === sectionKeys.length - 1 ? 0 : currentIndex + 1;
     showSection(currentIndex);
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
       currentIndex =
-        currentIndex === 0
-          ? Object.keys(sections).length - 1
-          : currentIndex - 1;
+        currentIndex === 0 ? sectionKeys.length - 1 : currentIndex - 1;
       showSection(currentIndex);
     }
     if (event.key === "ArrowRight") {
       currentIndex =
-        currentIndex === Object.keys(sections).length - 1
-          ? 0
-          : currentIndex + 1;
+        currentIndex === sectionKeys.length - 1 ? 0 : currentIndex + 1;
       showSection(currentIndex);
     }
   });
 
-  document.querySelectorAll("nav a").forEach((link) => {
+  document.querySelectorAll("nav a").forEach((link, i) => {
     link.addEventListener("click", function (e) {
       const section = this.getAttribute("data-section");
       if (section) {
         e.preventDefault();
-        currentIndex = Object.keys(sections).indexOf(section);
+        currentIndex = sectionKeys.indexOf(section);
         showSection(currentIndex);
       }
     });
@@ -99,16 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
           suggested: document.getElementById("suggested"),
         };
 
-        for (let key in statusContainers) {
+        sectionKeys.forEach((key) => {
           const container = statusContainers[key];
-
           const sectionElements = Array.from(container.children).filter(
             (child) => !child.classList.contains("game-container")
           );
-
           container.innerHTML = "";
           sectionElements.forEach((element) => container.appendChild(element));
-        }
+        });
 
         const isChecked = document.getElementById("toggle").checked;
 
@@ -126,7 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ...genres
           ] = row;
 
-          if (statusContainers[status]) {
+          const container = statusContainers[status];
+          if (container) {
             const gameContainer = document.createElement("div");
             gameContainer.className = "game-container";
             gameContainer.style.setProperty("--animation-order", index);
@@ -193,17 +186,18 @@ document.addEventListener("DOMContentLoaded", () => {
               gameContainer.appendChild(noteElement);
             }
 
-            statusContainers[status].appendChild(gameContainer);
+            container.appendChild(gameContainer);
           }
         });
 
-        for (let key in statusContainers) {
-          if (!statusContainers[key].children.length) {
+        sectionKeys.forEach((key) => {
+          const container = statusContainers[key];
+          if (!container.children.length) {
             const noGamesMessage = document.createElement("p");
             noGamesMessage.textContent = "no games found!";
-            statusContainers[key].appendChild(noGamesMessage);
+            container.appendChild(noGamesMessage);
           }
-        }
+        });
 
         loadingMessage.style.display = "none";
       }
