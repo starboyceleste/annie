@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const url = "https://script.google.com/macros/s/AKfycbyJmjCPrvwbUmx-DJAsxOI9wgXUGN8GjSJsK0NBQquRVJc88cu1tAvukB1z7aaF61Kb/exec";
     
         const loadingMessage = document.getElementById("loading-message");
-        const lastUpdatedElement = document.getElementById("last-updated");
+        const lastUpdatedElement = document.querySelector("#lastmod > span");
 
         loadingMessage.style.display = "block";
     
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
 
             const lastUpdated = data.find(row => row[0] === "lastUpdated")[1];
-            lastUpdatedElement.textContent = `Last updated: ${new Date(lastUpdated).toLocaleString()}`;
+            lastUpdatedElement.textContent = `${new Date(lastUpdated).toLocaleString()}`;
     
             function updateDisplay() {
                 const statusContainers = {

@@ -146,7 +146,7 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 0.8em 4px;
+    padding: 7px 0.8em 4px;
     margin-right: 0.4em;
     background-color: var(--draw-primary);
     color: var(--draw-primary-inverted);
@@ -266,7 +266,7 @@ a.active {
     animation-delay: calc(var(--animation-order) * 0.05s); /* Delay based on order */
 }
 
-#last-updated {
+#lastmod {
     margin-top: 4em;
     margin-right: 8px;
     text-align: right;
