@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
         showSection(currentIndex);
     });
 
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+            currentIndex = (currentIndex === 0) ? sections.length - 1 : currentIndex - 1;
+            showSection(currentIndex);
+        }
+        if (event.key === "ArrowRight") {
+            currentIndex = (currentIndex === sections.length - 1) ? 0 : currentIndex + 1;
+            showSection(currentIndex);
+        }
+    })
+
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(e) {
             const section = this.getAttribute('data-section');
