@@ -1,10 +1,7 @@
 :root {
-  --accent: #9b3b9e;
-  --draw-primary: #9b3b9e;
-  --draw-primary-inverted: white;
-  --draw-secondary: #9b3b9e;
-  --fill-primary: #ffedef;
-  --fill-secondary: #f5dfd3;
+  --foreground: #9b3b9e;
+  --background: #ffedef;
+  --dim: #f0ccd5;
 }
 
 header {
@@ -34,9 +31,9 @@ header > * {
 body {
   font-family: inter-variable, sans-serif;
   font-variation-settings: "slnt" 0, "wght" 300;
-  color: var(--draw-primary);
+  color: var(--foreground);
 
-  background-color: var(--fill-primary);
+  background-color: var(--background);
 
   margin: 0;
   padding: 1em;
@@ -81,7 +78,7 @@ p {
   grid-template-columns: repeat(2, 1fr);
   width: fit-content;
   border-radius: 10px;
-  background: var(--draw-primary);
+  background: var(--foreground);
   cursor: pointer;
 }
 .toggleContainer::before {
@@ -91,7 +88,7 @@ p {
   height: 100%;
   left: 0%;
   border-radius: 8px;
-  background: var(--fill-primary);
+  background: var(--background);
   transition: all 0.3s;
 }
 .toggleCheckbox:checked + .toggleContainer::before {
@@ -106,19 +103,19 @@ p {
   display: none;
 }
 .toggleCheckbox:checked + .toggleContainer div:first-child {
-  color: var(--fill-primary);
+  color: var(--background);
   transition: color 0.3s;
 }
 .toggleCheckbox:checked + .toggleContainer div:last-child {
-  color: var(--draw-primary);
+  color: var(--foreground);
   transition: color 0.3s;
 }
 .toggleCheckbox + .toggleContainer div:first-child {
-  color: var(--draw-primary);
+  color: var(--foreground);
   transition: color 0.3s;
 }
 .toggleCheckbox + .toggleContainer div:last-child {
-  color: var(--fill-primary);
+  color: var(--background);
   transition: color 0.3s;
 }
 
@@ -151,8 +148,8 @@ p {
   justify-content: center;
   padding: 7px 0.8em 4px;
   margin-right: 0.4em;
-  background-color: var(--draw-primary);
-  color: var(--draw-primary-inverted);
+  background-color: var(--foreground);
+  color: var(--background);
   border-radius: 50px;
   font-size: 0.9em;
   line-height: 1;
@@ -163,7 +160,7 @@ p {
 
 .progress-container {
   width: 100%;
-  background-color: #f0ccd5;
+  background-color: var(--dim);
   border-radius: 5px;
   height: 6px;
   margin-bottom: 0.5em;
@@ -171,7 +168,7 @@ p {
 }
 
 .progress-fill {
-  background-color: var(--accent);
+  background-color: var(--foreground);
   height: 100%;
   transition: width 0.3s ease;
   border-radius: 4px 0 0 4px;
@@ -180,13 +177,13 @@ p {
 .progress-container + span {
   display: block;
   font-size: 0.9em;
-  color: var(--draw-secondary);
+  color: var(--foreground);
   margin-top: 0.5em;
 }
 
 .note {
   font-size: 0.9em;
-  color: var(--draw-secondary);
+  color: var(--foreground);
   margin-top: 1em;
   font-style: italic;
   line-height: 1.5em;
@@ -236,7 +233,7 @@ p {
 
 a {
   font-size: 0.7em;
-  color: var(--draw-primary);
+  color: var(--foreground);
   margin-right: 2px;
   text-decoration: none;
   font-weight: light;
