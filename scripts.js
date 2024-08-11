@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showSection(currentIndex);
 
-    async function fetchGoogleSheetData() {
-        const url = "https://script.google.com/macros/s/AKfycbz4IOU3RZlRt2ixbo7Cy4RqaMBrQ1DyIDGzn9krMlc1USpGZwgW-4bkLuZk5z-hCuD9/exec";
+    async function fetchData() {
+        const url = "https://script.google.com/macros/s/AKfycbyJmjCPrvwbUmx-DJAsxOI9wgXUGN8GjSJsK0NBQquRVJc88cu1tAvukB1z7aaF61Kb/exec";
     
         const loadingMessage = document.getElementById("loading-message");
         const lastUpdatedElement = document.getElementById("last-updated");
@@ -66,13 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
     
                 for (let key in statusContainers) {
-                    if (key === "finished") {
-                        const note = statusContainers[key].querySelector("p");
-                        statusContainers[key].innerHTML = "";
-                        statusContainers[key].appendChild(note);
-                    } else {
-                        statusContainers[key].innerHTML = "";
-                    }
+                    const container = statusContainers[key];
+            
+                    const sectionElements = Array.from(container.children).filter(child => !child.classList.contains('game-container'));
+            
+                    container.innerHTML = "";
+                    sectionElements.forEach(element => container.appendChild(element));
                 }
     
                 const isChecked = document.getElementById("toggle").checked;
@@ -165,5 +164,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    fetchGoogleSheetData();
+    fetchData();
 });
