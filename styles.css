@@ -251,17 +251,6 @@ a.active {
   font-weight: bold;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .game-container {
   margin-bottom: 2em;
   opacity: 0;
@@ -285,11 +274,13 @@ a.active {
   animation: fadeIn 2s ease forwards;
 }
 
-@keyframes fadeInAnimation {
-  0% {
+@keyframes fadeIn {
+  from {
     opacity: 0;
+    transform: translateY(20px);
   }
-  100% {
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
