@@ -1,60 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://use.typekit.net/bnd5kan.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <title>Annie's Gamer Gauntlet</title>
-    </head>
-    <body>
-        <header>
-            <h1>Annie's<br>Gamer<br>Gauntlet</h1>
-            <p>track annie's story game progress. this list is maintained by her mod team in their free time.</p>
-            <input type="checkbox" id="toggle" class="toggleCheckbox"/>
-            <label for="toggle" class="toggleContainer">
-                <div>play<br>time</div>   
-                <div>check<br>points</div>
-            </label>
-        </header>
-        <div class="content">
-            <p class="description">hey! not all story games are created equal. this list usually only considers mid to full-length games that have a story focus, as opposed to games <i>that have a story.</i></p>
-            <h2 class="section-header">
-                <span id="left-arrow" class="arrow">←</span>
-                <span id="section-title">IN-PROGRESS.</span>
-                <span id="right-arrow" class="arrow">→</span>
-            </h2>
-            <div id="in-progress" class="section"></div>
-            <div id="finished" class="section">
-                <p>note: a game may be completed even with incomplete markers, such as a game with multiple endings, an extended end — or if annie simply feels so. (this is not the same as annie having <i>dropped a game</i>)</p>
-            </div>
-            <div id="on-hold" class="section"></div>
-            <div id="dropped" class="section"></div>
-            <div id="planned" class="section"></div>
-            <div id="suggested" class="section"></div>
-            <p id="loading-message">retrieving data, wait bro...</p>
-            <nav>
-                <a href="https://www.twitch.tv/anniepants02">[ttv/anniepants02]</a>
-                <a href="#" data-section="in-progress">[in-progress]</a>
-                <a href="#" data-section="finished">[finished]</a>
-                <a href="#" data-section="on-hold">[on-hold]</a>
-                <a href="#" data-section="dropped">[dropped]</a>
-                <a href="#" data-section="planned">[planned]</a>
-                <a href="#" data-section="suggested">[suggested]</a>
-            </nav>
-            <footer>
-                <div id="lastmod">last updated: <span>Loading...</span></div>
-                <a href="https://ko-fi.com/starboyceleste" id="credit">[made by celeste: visit my kofi]</a>
-            </footer>
-        </div> 
-        
-        <script src="scripts.js"></script>
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/bnd5kan.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Annie's Gamer Gauntlet</title>
+  </head>
+  <body>
+    <header>
+      <h1>Annie's<br />Gamer<br />Gauntlet</h1>
+      <p>
+        track annie's story game progress. this list is maintained by her mod
+        team in their free time.
+      </p>
+      <input type="checkbox" id="toggle" class="toggleCheckbox" />
+      <label for="toggle" class="toggleContainer">
+        <div>play<br />time</div>
+        <div>check<br />points</div>
+      </label>
+    </header>
+    <div class="content">
+      <p class="description">
+        hey! not all story games are created equal. this list usually only
+        considers mid to full-length games that have a story focus, as opposed
+        to games <i>that have a story.</i>
+      </p>
+      <h2 class="section-header">
+        <span id="left-arrow" class="arrow">←</span>
+        <span id="section-title">IN-PROGRESS.</span>
+        <span id="right-arrow" class="arrow">→</span>
+      </h2>
+      <div id="in-progress" class="section"></div>
+      <div id="finished" class="section">
+        <p>
+          note: a game may be completed even with incomplete markers, such as a
+          game with multiple endings, an extended end — or if annie simply feels
+          so. (this is not the same as annie having <i>dropped a game</i>)
+        </p>
+      </div>
+      <div id="on-hold" class="section"></div>
+      <div id="dropped" class="section"></div>
+      <div id="planned" class="section"></div>
+      <div id="suggested" class="section"></div>
+      <p id="loading-message">retrieving data, wait bro...</p>
+      <nav>
+        <a href="https://www.twitch.tv/anniepants02">[ttv/anniepants02]</a>
+        <a href="#" data-section="in-progress">[in-progress]</a>
+        <a href="#" data-section="finished">[finished]</a>
+        <a href="#" data-section="on-hold">[on-hold]</a>
+        <a href="#" data-section="dropped">[dropped]</a>
+        <a href="#" data-section="planned">[planned]</a>
+        <a href="#" data-section="suggested">[suggested]</a>
+      </nav>
+      <footer>
+        <div id="lastmod">last updated: <span>Loading...</span></div>
+        <a href="https://ko-fi.com/starboyceleste" id="credit"
+          >[made by celeste: visit my kofi]</a
+        >
+      </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
 </html>
