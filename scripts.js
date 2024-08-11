@@ -116,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const [
             status,
             game,
-            hoursPlayed,
-            hoursToComplete,
-            chapter,
-            chaptersToComplete,
-            progressUnit,
-            lastPlayedDate,
+            hours,
+            hoursMax,
+            checkpoints,
+            checkpointsMax,
+            checkpointType,
+            date,
             note,
             ...genres
           ] = row;
@@ -157,13 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
             let progressText = "";
 
             if (isChecked) {
-              progressPercentage = (chapter / chaptersToComplete) * 100;
-              progressText = `${chapter}/${chaptersToComplete} ${progressUnit} (${progressPercentage.toFixed(
+              progressPercentage = (checkpoints / checkpointsMax) * 100;
+              progressText = `${checkpoints}/${checkpointsMax} ${checkpointType} (${progressPercentage.toFixed(
                 1
               )}%)`;
             } else {
-              progressPercentage = (hoursPlayed / hoursToComplete) * 100;
-              progressText = `${hoursPlayed}/${hoursToComplete} Hours (${progressPercentage.toFixed(
+              progressPercentage = (hours / hoursMax) * 100;
+              progressText = `${hours}/${hoursMax} Hours (${progressPercentage.toFixed(
                 1
               )}%)`;
             }
@@ -172,8 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
             progressContainer.appendChild(progressFill);
             gameContainer.appendChild(progressContainer);
 
-            if (lastPlayedDate) {
-              const dateObj = new Date(lastPlayedDate);
+            if (date) {
+              const dateObj = new Date(date);
               const currentDate = new Date();
               const formattedDate = `${dateObj.toLocaleString("default", {
                 month: "long",
