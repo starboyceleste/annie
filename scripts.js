@@ -156,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
               )}%)`;
             } else {
               progressPercentage = (hours / hoursMax) * 100;
-              progressText = `${hours}/${hoursMax} Hours (${progressPercentage.toFixed(
+              progressText = `${hours.toFixed(1)}/${hoursMax.toFixed(
                 1
-              )}%)`;
+              )} Hours (${progressPercentage.toFixed(1)}%)`;
             }
 
             progressFill.style.width = `${progressPercentage}%`;
