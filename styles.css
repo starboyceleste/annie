@@ -4,9 +4,21 @@
   --dim: #f0ccd5;
 }
 
+body {
+  font-family: inter-variable, sans-serif;
+  font-variation-settings: "slnt" 0, "wght" 300;
+
+  color: var(--foreground);
+  background-color: var(--background);
+
+  padding: 1em;
+  max-width: 32em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -30,20 +42,6 @@ header > label {
   }
 }
 
-body {
-  font-family: inter-variable, sans-serif;
-  font-variation-settings: "slnt" 0, "wght" 300;
-  color: var(--foreground);
-
-  background-color: var(--background);
-
-  margin: 0;
-  padding: 1em;
-  max-width: 32em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 h1,
 h2,
 h3 {
@@ -54,19 +52,19 @@ h2 {
   font-weight: 300;
 }
 
-header p {
+#description {
   font-size: 0.9em;
   line-height: 1.3em;
+}
+
+#memo {
+  line-height: 1.2em;
+  margin-bottom: 4em;
 }
 
 p {
   font-size: 0.9em;
   line-height: 1.5em;
-}
-
-.description {
-  line-height: 1.2em;
-  margin-bottom: 4em;
 }
 
 .toggleContainer {
@@ -125,10 +123,6 @@ p {
   margin-top: 2em;
 }
 
-.game-container {
-  margin-bottom: 2em;
-}
-
 .game-container h3 {
   display: inline-block;
   margin: 0;
@@ -145,34 +139,33 @@ p {
 }
 
 .genre-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px 0.8em 4px;
-  margin-right: 0.4em;
-  background-color: var(--foreground);
-  color: var(--background);
-  border-radius: 50px;
   font-size: 0.9em;
   line-height: 1;
+
+  background-color: var(--foreground);
+  color: var(--background);
+
+  padding: 7px 0.8em 4px;
+  margin-right: 0.4em;
+  border-radius: 50px;
   height: 24px;
+
+  display: inline-flex;
   box-sizing: border-box;
-  vertical-align: middle;
 }
 
 .progress-container {
-  width: 100%;
   background-color: var(--dim);
   border-radius: 5px;
   height: 6px;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   overflow: hidden;
 }
 
 .progress-fill {
   background-color: var(--foreground);
   height: 100%;
-  transition: width 0.3s ease;
+  transition: width 2s ease;
   border-radius: 4px 0 0 4px;
 }
 

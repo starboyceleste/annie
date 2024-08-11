@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .getElementById("toggle")
         .addEventListener("change", updateDisplay);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      // console.error("Error fetching data:", error);
       loadingMessage.textContent = "sorry, it broke. womp.";
     }
   }
