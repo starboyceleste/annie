@@ -1,0 +1,292 @@
+:root {
+    --accent: #9b3b9e;
+    --draw-primary: #9b3b9e;
+    --draw-primary-inverted: white;
+    --draw-secondary: #9b3b9e;
+    --fill-primary: #ffedef;
+    --fill-secondary: #f5dfd3;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > * {
+    width: 30%;
+}
+  
+
+@media (max-width: 420px) {
+    header {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    header h1, header p, header label {
+      width: 100%;
+    }
+}
+
+body {
+    font-family: inter-variable, sans-serif;
+    font-variation-settings: "slnt" 0, "wght" 300;
+    color: var(--draw-primary);
+
+    background-color: var(--fill-primary);
+
+    margin: 0;
+    padding: 1em;
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2, h3 {
+    font-family: roca, serif;
+    font-weight: 700;
+}
+h2 {
+    font-weight: 300;
+}
+
+header p {
+    font-size: 0.9em;
+    line-height: 1.3em;
+}
+
+p {
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.description {
+    line-height: 1.2em;
+    margin-bottom: 4em;
+}
+
+.toggleContainer {
+    font-weight: bold;
+
+    height: 90px;
+    margin-bottom: 0.5em;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border-radius: 10px;
+    background: var(--draw-primary);
+    cursor: pointer;
+}
+.toggleContainer::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius:8px;
+    background: var(--fill-primary);
+    transition: all 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer::before {
+    left: 50%;
+}
+.toggleContainer div {
+    padding: 6px;
+    text-align: left;
+    z-index: 1;
+}
+.toggleCheckbox {
+    display: none;
+}
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+    color: var(--fill-primary);
+    transition: color 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+    color: var(--draw-primary);
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:first-child{
+    color: var(--draw-primary);
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:last-child{
+    color: var(--fill-primary);
+    transition: color 0.3s;
+}
+
+.content {
+    margin-top: 2em;
+}
+
+.game-container {
+    margin-bottom: 2em;
+}
+
+.game-container h3 {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 0.5em;
+    vertical-align: middle;
+}
+
+.genre-container {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-bottom: 1em;
+}
+
+.genre-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0.8em 4px;
+    margin-right: 0.4em;
+    background-color: var(--draw-primary);
+    color: var(--draw-primary-inverted);
+    border-radius: 50px;
+    font-size: 0.9em;
+    line-height: 1;
+    height: 24px;
+    box-sizing: border-box;
+    vertical-align: middle; 
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #f0ccd5;
+    border-radius: 5px;
+    height: 6px;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: var(--accent);
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 4px 0 0 4px;
+}
+
+.progress-container + span {
+    display: block;
+    font-size: 0.9em;
+    color: var(--draw-secondary);
+    margin-top: 0.5em;
+}
+
+.note {
+    font-size: 0.9em;
+    color: var(--draw-secondary);
+    margin-top: 1em;
+    font-style: italic;
+    line-height: 1.5em;
+}
+
+.arrow {
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 0 10px;
+    user-select: none;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.section-header #section-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#left-arrow {
+    left: 0;
+}
+
+#right-arrow {
+    right: 0;
+}
+
+a {
+    font-size: 0.7em;
+    color: var(--draw-primary);
+    margin-right: 2px;
+    text-decoration: none;
+    font-weight: light;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.active {
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.game-container {
+    margin-bottom: 2em; 
+    opacity: 0;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--animation-order) * 0.05s); /* Delay based on order */
+}
+
+#last-updated {
+    margin-top: 4em;
+    margin-right: 8px;
+    text-align: right;
+    font-size: 12px;
+}
+
+#credit {
+    display: block;
+    margin-top: 1em;
+    text-align: right;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
