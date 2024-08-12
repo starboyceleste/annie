@@ -10,7 +10,7 @@ The list is maintained by her Twitch moderators and community members:
 
 ![Screenshot of a Google Sheet with entries for game details and story completion progress.](/assets/images/press-kit/google-sheet.png)
 
-> [!TIP]
-> Feel free to adapt this project to your own needs.
+Feel free to adapt this project to your own needs.
 
-If you'd like to follow or support my other work, visit my [Twitter](https://x.com/starboyceleste) (where you can find my Linktree) or consider sending a tip to my [ko-fi](https://ko-fi.com/starboyceleste).
+> [!NOTE]
+> If you'd like to follow or support my other work, visit my Twitter (where you can find my Linktree) or <b>consider sending a tip to my ko-fi</b>.<br><br> ![https://x.com/starboyceleste](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white) ![https://ko-fi.com/starboyceleste](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)
